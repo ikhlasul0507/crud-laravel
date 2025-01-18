@@ -1,0 +1,38 @@
+name: Deploy Laravel to Hosting
+
+on:
+  push:
+    branches:
+      - main # Ganti dengan nama branch utama kamu
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout repository
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    # Step 2: Setup PHP
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.1 # Ganti dengan versi PHP di hosting kamu
+        extensions: mbstring, bcmath, openssl, curl
+        tools: composer
+
+    # Step 3: Install Dependencies
+    - name: Install Composer Dependencies
+      run: composer install --optimize-autoloader --no-dev
+
+    # Step 4: Upload Files via FTP
+    - name: Deploy to FTP Server
+      uses: SamKirkland/FTP-Deploy-Action@v4
+      with:
+        ftp-server: "ftp.inviteles.store"
+        ftp-username: "app@inviteles.store"
+        ftp-password: "@WW^h]mBwC5k"
+        ftp-port: "21"
+      # local-dir: ./ # Direktori lokal yang akan di-upload
+      # server-dir: /public_html/app. # Direktori tujuan di hosting
