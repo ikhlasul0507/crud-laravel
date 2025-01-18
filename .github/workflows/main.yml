@@ -15,12 +15,12 @@ jobs:
       uses: actions/checkout@v3
 
     # Step 2: Setup PHP
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: 8.1 # Ganti dengan versi PHP di hosting kamu
-        extensions: mbstring, bcmath, openssl, curl
-        tools: composer
+    # - name: Setup PHP
+    #   uses: shivammathur/setup-php@v2
+    #   with:
+    #     php-version: 8.1 # Ganti dengan versi PHP di hosting kamu
+    #     extensions: mbstring, bcmath, openssl, curl
+    #     tools: composer
 
     # Step 3: Install Dependencies
     - name: Install Composer Dependencies
